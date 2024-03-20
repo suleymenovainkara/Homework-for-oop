@@ -1,0 +1,53 @@
+/*Премии оказалось достаточно не только для покраски стен, но и обновления домашней техники.
+Анна, жена Паши, считает, что деньги, сэкономленные на скидке – всё равно, что заработанные.
+Анне нужно купить холодильник, микроволновку и телевизор.
+Составьте программу, которая выведет такой набор из этих трёх товаров, что скидка в тенге будет наибольшей.
+В случае одинакового размера скидки, покупается товар с наименьшей ценой.*/
+import java.util.Scanner;
+
+public class ex4 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Ввод цен на холодильник, микроволновку и телевизор
+        System.out.println("Введите цену холодильника (в тенге):");
+        double fridgePrice = scanner.nextDouble();
+
+        System.out.println("Введите цену микроволновки (в тенге):");
+        double microwavePrice = scanner.nextDouble();
+
+        System.out.println("Введите цену телевизора (в тенге):");
+        double tvPrice = scanner.nextDouble();
+
+        // Ввод размеров скидок на холодильник, микроволновку и телевизор
+        System.out.println("Введите размер скидки на холодильник (в тенге):");
+        double fridgeDiscount = scanner.nextDouble();
+
+        System.out.println("Введите размер скидки на микроволновку (в тенге):");
+        double microwaveDiscount = scanner.nextDouble();
+
+        System.out.println("Введите размер скидки на телевизор (в тенге):");
+        double tvDiscount = scanner.nextDouble();
+
+        // Вычисление скидок в процентах от исходной цены
+        double fridgeDiscountPercent = (fridgeDiscount * fridgePrice) / 100;
+        double microwaveDiscountPercent = (microwaveDiscount * microwavePrice) / 100;
+        double tvDiscountPercent = (tvDiscount * tvPrice) / 100;
+
+        // Определение товара с наибольшей скидкой
+        double maxDiscountPercent = Math.max(fridgeDiscountPercent, Math.max(microwaveDiscountPercent, tvDiscountPercent));
+
+        // Определение товара с наименьшей ценой среди товаров с максимальной скидкой
+        String bestItem;
+        if (maxDiscountPercent == fridgeDiscountPercent) {
+            bestItem = "холодильник";
+        } else if (maxDiscountPercent == microwaveDiscountPercent) {
+            bestItem = "микроволновка";
+        } else {
+            bestItem = "телевизор";
+        }
+
+        // Вывод результата
+        System.out.println("Наибольшая скидка получается на " + bestItem + ", скидка составляет " + maxDiscountPercent + "тенге");
+    }
+}
