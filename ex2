@@ -1,0 +1,58 @@
+/*Паша придумал новые технологии нарезки продуктов для фирмы «Нарежем всё!!!», за что фирма выплатила ему премию.
+На неё он хочет покрасить стены в своей комнате. Для этого ему необходимо узнать, сколько банок краски нужно купить.
+Его комната имеет длину a, ширину b и высоту h.
+В его комнате есть дверной проем – шириной w и высотой q, а также окно шириной s и высотой p.
+Известно, что одной банки хватает на k квадратных метров площади окрашиваемой поверхности.
+Напишите программу, которая сможет решить эту задачу.*/
+
+import java.util.Scanner;
+
+public class ex3 {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Ввод размеров комнаты
+        System.out.println("Введите длину комнаты (в метрах):");
+        double length = scanner.nextDouble();
+
+        System.out.println("Введите ширину комнаты (в метрах):");
+        double width = scanner.nextDouble();
+
+        System.out.println("Введите высоту комнаты (в метрах):");
+        double height = scanner.nextDouble();
+
+        // Ввод размеров двери
+        System.out.println("Введите ширину двери (в метрах):");
+        double doorWidth = scanner.nextDouble();
+
+        System.out.println("Введите высоту двери (в метрах):");
+        double doorHeight = scanner.nextDouble();
+
+        // Ввод размеров окна
+        System.out.println("Введите ширину окна (в метрах):");
+        double windowWidth = scanner.nextDouble();
+
+        System.out.println("Введите высоту окна (в метрах):");
+        double windowHeight = scanner.nextDouble();
+
+        // Ввод количества квадратных метров, которое можно покрасить одной банкой краски
+        System.out.println("Введите количество квадратных метров, которое можно покрасить одной банкой краски:");
+        double areaPerCan = scanner.nextDouble();
+
+        // Вычисление площади стен
+        double roomArea = 2 * (length * height + width * height);
+
+        // Вычисление площади двери и окна
+        double doorArea = doorWidth * doorHeight;
+        double windowArea = windowWidth * windowHeight;
+
+        // Вычисление общей площади поверхности, которую нужно покрасить
+        double totalPaintArea = roomArea - doorArea - windowArea;
+
+        // Вычисление количества банок краски
+        int cansNeeded = (int) Math.ceil(totalPaintArea / areaPerCan);
+
+        // Вывод результатов
+        System.out.println("Для покраски комнаты вам понадобится " + cansNeeded + " банок краски.");
+    }
+}
